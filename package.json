@@ -1,0 +1,17 @@
+{
+  "name": "@vueform/plugin-mask",
+  "version": "1.0.0",
+  "description": "Official input mask plugin for Vueform.",
+  "type": "module",
+  "main": "./index.js",
+  "authors": [
+    {
+      "name": "Adam Berecz",
+      "email": "adam@vueform.com"
+    }
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "imask": "^7.4.0"
+  }
+}
