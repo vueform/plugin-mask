@@ -2,16 +2,32 @@
   "name": "@vueform/plugin-mask",
   "version": "1.0.0",
   "description": "Official input mask plugin for Vueform.",
-  "type": "module",
-  "main": "./index.js",
+  "repository": "vueform/plugin-mask",
+  "license": "MIT",
   "authors": [
     {
       "name": "Adam Berecz",
       "email": "adam@vueform.com"
     }
   ],
-  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup --config build/rollup.config.js",
+    "prepack": "npm run build"
+  },
   "dependencies": {
     "imask": "^7.4.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.4",
+    "rollup": "^4.12.0",
+    "rollup-plugin-license": "^3.2.0"
   }
 }
