@@ -1,4 +1,4 @@
-<a href="https://vueform.com?cid=plugin-mask" target="_blank">
+<a href="https://vueform.com?cid=plugin-mask">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://github.com/vueform/plugin-mask/raw/main/assets/logo-dark.svg">
     <img alt="Vueform Logo" src="https://github.com/vueform/plugin-mask/raw/main/assets/logo.svg">
