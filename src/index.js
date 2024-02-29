@@ -1,8 +1,6 @@
 import { toRefs, onMounted, ref, computed, watch } from 'vue'
 import IMask from 'imask'
 
-// - TTextElement ?
-
 export default {
   apply: 'TextElement',
   props: {
@@ -50,7 +48,7 @@ export default {
       return  typeof mask.value === 'string' ? {
         mask: mask.value,
       } : (
-        typeof mask.value === 'fuction'
+        typeof mask.value === 'function'
           ? mask.value(IMask)
           : mask.value
       )
@@ -118,7 +116,7 @@ export default {
       if (Mask.value) {
         destroyMask()
       }
-
+      
       Mask.value = IMask(el$.value.input, resolvedOptions.value)
 
       Mask.value.on('accept', () => {
@@ -165,151 +163,3 @@ export default {
     }
   }
 }
-
-// maskAutofix: {
-//   required: false,
-//   // type: ____,
-//   default: undefined,
-// },
-// maskLazy: {
-//   required: false,
-//   // type: ____,
-//   default: undefined,
-// },
-// maskOverwrite: {
-//   required: false,
-//   // type: ____,
-//   default: undefined,
-// },
-// maskEager: {
-//   required: false,
-//   // type: ____,
-//   default: undefined,
-// },
-
-// // Pattern
-// maskDefinitions: {
-//   required: false,
-//   // type: ____,
-//   default: undefined,
-// },
-// maskPlaceholderChar: {
-//   required: false,
-//   // type: ____,
-//   default: undefined,
-// },
-// maskDisplayChar: {
-//   required: false,
-//   // type: ____,
-//   default: undefined,
-// },
-// maskBlocks: {
-//   required: false,
-//   // type: ____,
-//   default: undefined,
-// },
-
-// // Number
-// maskScale: {
-//   required: false,
-//   // type: ____,
-//   default: undefined,
-// },
-// maskThousandSeparator: {
-//   required: false,
-//   // type: ____,
-//   default: undefined,
-// },
-// maskPadFractionalZeros: {
-//   required: false,
-//   // type: ____,
-//   default: undefined,
-// },
-// maskNormalizeZeros: {
-//   required: false,
-//   // type: ____,
-//   default: undefined,
-// },
-// maskRadix: {
-//   required: false,
-//   // type: ____,
-//   default: undefined,
-// },
-// maskMapToRadix: {
-//   required: false,
-//   // type: ____,
-//   default: undefined,
-// },
-// maskMin: {
-//   required: false,
-//   // type: ____,
-//   default: undefined,
-// },
-// maskMax: {
-//   required: false,
-//   // type: ____,
-//   default: undefined,
-// },
-
-// // Range
-// maskFrom: {
-//   required: false,
-//   // type: ____,
-//   default: undefined,
-// },
-// maskTo: {
-//   required: false,
-//   // type: ____,
-//   default: undefined,
-// },
-// maskMaxLength: {
-//   required: false,
-//   // type: ____,
-//   default: undefined,
-// },
-
-// // Enum
-// maskEnum: {
-//   required: false,
-//   // type: ____,
-//   default: undefined,
-// },
-
-// // Date
-// maskPattern: {
-//   required: false,
-//   // type: ____,
-//   default: undefined,
-// },
-// maskFormat: {
-//   required: false,
-//   // type: ____,
-//   default: undefined,
-// },
-// maskParse: {
-//   required: false,
-//   // type: ____,
-//   default: undefined,
-// },
-
-// maskExpose: {
-//   required: false,
-//   // type: ____,
-//   default: undefined,
-// },
-
-// maskValue: {
-//   require: false,
-//   type: Boolean,
-//   default: true,
-// },
-// maskPlaceholder: {
-//   require: false,
-//   type: String,
-//   default: '_',
-// },
-// showMask: {
-//   require: false,
-//   type: Boolean,
-//   default: true,
-// },

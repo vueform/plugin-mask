@@ -12,7 +12,7 @@ export default {
     license({
       banner: {
         content: `Vueform Mask Plugin v<%= pkg.version %> (https://github.com/vueform/plugin-mask)\n` + 
-                  `Copyright (c) <%= moment().format('YYYY') %>-present Adam Berecz <adam@vueform.com>\n` + 
+                  `Copyright (c) 2024-present Adam Berecz <adam@vueform.com>\n` + 
                   `Licensed under the MIT License`,
         commentStyle: 'ignored',
       }

@@ -12,8 +12,12 @@
   ],
   "type": "module",
   "exports": {
-    ".": "./dist/index.js"
+    ".": {
+      "types": "./types/index.d.ts",
+      "default": "./dist/index.js"
+    }
   },
+  "types": "./types/index.d.ts",
   "main": "./dist/index.js",
   "files": [
     "dist"
@@ -23,7 +27,9 @@
     "prepack": "npm run build"
   },
   "dependencies": {
-    "imask": "^7.4.0"
+    "@vueform/vueform": "^1.8.0",
+    "imask": "^7.4.0",
+    "vue": "^3.4.19"
   },
   "devDependencies": {
     "@rollup/plugin-terser": "^0.4.4",

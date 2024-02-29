@@ -1,10 +1,16 @@
-# Input Mask plugin for [Vueform](https://github.com/vueform/vueform)
+  <a href="https://vueform.com?cid=plugin-mask" target="_blank">
+    <br>
+    <img align="center" src="https://github.com/vueform/plugin-mask/raw/main/assets/logo.svg">
+    <br>
+  </a>
 
-Plugin for [Vueform](https://github.com/vueform/vueform) to add 
+# Official Input Mask plugin for [Vueform](https://github.com/vueform/vueform)
+
+Plugin for [Vueform](https://github.com/vueform/vueform) to add [input mask](https://vueform.com/reference/text-element#option-mask) to text elements.
 
 ## Prerequisites
 
-- [Vueform 1.5.4+](https://github.com/vueform/vueform)
+- [Vueform 1.8.1+](https://github.com/vueform/vueform)
 
 ## Installation
 
@@ -37,11 +43,13 @@ export default {
   <Vueform>
     <TextElement
       name="text"
-      mask="+{1}(000)000-00-00"
+      mask="{+1} (000)-000-0000"
     />
   </Vueform>
 </template>
 ```
+
+More info and examples can be found on our [official documentation](https://vueform.com/reference/text-element#option-mask).
 
 ## License
 
