@@ -1,5 +1,9 @@
-[![Vueform Logo](https://github.com/vueform/plugin-mask/raw/main/assets/logo.svg#gh-light-mode-only)
-![Vueform Logo](https://github.com/vueform/plugin-mask/raw/main/assets/logo-dark.svg#gh-dark-mode-only)](https://vueform.com?cid=plugin-mask)
+<a href="https://vueform.com?cid=plugin-mask" target="_blank">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/vueform/plugin-mask/raw/main/assets/logo-dark.svg">
+    <img alt="Vueform Logo" src="https://github.com/vueform/plugin-mask/raw/main/assets/logo.svg">
+  </picture>
+</a>
 
 <br>
 
