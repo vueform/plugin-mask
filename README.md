@@ -1,8 +1,8 @@
-  <a href="https://vueform.com?cid=plugin-mask" target="_blank">
-    <br>
-    <img align="center" src="https://github.com/vueform/plugin-mask/raw/main/assets/logo.svg">
-    <br>
-  </a>
+[![Vueform Logo](https://github.com/vueform/plugin-mask/raw/main/assets/logo.svg#gh-light-mode-only)
+![Vueform Logo](https://github.com/vueform/plugin-mask/raw/main/assets/logo-dark.svg#gh-dark-mode-only)](https://vueform.com?cid=plugin-mask)
+
+<br>
+
 
 # Official Input Mask plugin for [Vueform](https://github.com/vueform/vueform)
 
