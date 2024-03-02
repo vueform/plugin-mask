@@ -1,7 +1,7 @@
 import { toRefs, onMounted, ref, computed, watch } from 'vue'
 import IMask from 'imask'
 
-export default {
+export default (options = {}) => ({
   apply: 'TextElement',
   props: {
     mask: {
@@ -45,13 +45,47 @@ export default {
     // ============== COMPUTED ===============
 
     const resolvedOptions = computed(() => {
-      return  typeof mask.value === 'string' ? {
-        mask: mask.value,
-      } : (
-        typeof mask.value === 'function'
-          ? mask.value(IMask)
-          : mask.value
-      )
+      return typeof options === 'function' ? options(IMask) : options
+    })
+
+    const resolvedMask = computed(() => {
+      let resolvedMask = typeof mask.value === 'function' ? resolveFunction(mask.value) : resolveMask(mask.value)
+
+      if (resolvedOptions.value.definitions) {
+        resolvedMask = {
+          ...resolvedMask,
+          definitions: resolveMaskObjects({
+            ...resolvedOptions.value.definitions,
+            ...resolvedMask.definitions,
+          })
+        }
+      }
+
+      if (resolvedOptions.value.blocks) {
+        resolvedMask = {
+          ...resolvedMask,
+          blocks: resolveMaskObjects({
+            ...resolvedOptions.value.blocks,
+            ...resolvedMask.blocks,
+          })
+        }
+      }
+
+      if (resolvedMask.definitions) {
+        resolvedMask = {
+          ...resolvedMask,
+          definitions: resolveMaskObjects(resolvedMask.definitions)
+        }
+      }
+
+      if (resolvedMask.blocks) {
+        resolvedMask = {
+          ...resolvedMask,
+          blocks: resolveMaskObjects(resolvedMask.blocks)
+        }
+      }
+
+      return resolvedMask
     })
 
     const model = computed({
@@ -61,7 +95,65 @@ export default {
 
     // =============== METHODS ===============
 
-    const handleInput = () => {}
+    const resolveMask = (mask) => {
+      return typeof mask === 'string'
+        ? { mask: escapeString(mask) }
+        : mask instanceof RegExp
+          ? { mask }
+          : Array.isArray(mask)
+            ? mask.map(resolveMask)
+            : mask && typeof mask === 'object'
+              ? resolveMaskObject(mask)
+              : { mask }
+    }
+
+    const resolveMaskObjects = (obj) => {
+      return Object.keys(obj).reduce((prev, curr) => ({
+        ...prev,
+        [curr]: resolveMask(obj[curr])
+      }), {})
+    }
+
+    const resolveMaskObject = (obj) => {
+      let resolved = {
+        ...obj,
+      }
+
+      if (obj.placeholder !== undefined) {
+        resolved.lazy = !resolved.placeholder
+      }
+
+      if (obj.caseInsensitive !== undefined) {
+        resolved.matchValue = caseInsensitive
+      }
+
+      if (Array.isArray(obj.mask)) {
+        resolved.mask = obj.mask.map(resolveMask)
+
+        if (obj.mask.some(m => m.startsWith)) {
+          resolved.dispatch = (appended, dynamicMasked) => {
+            const number = (dynamicMasked.value + appended).replace(/\D/g,'')
+
+            return dynamicMasked.compiledMasks.find(m => number.indexOf(m.startsWith) === 0)
+          }
+        }
+      }
+
+
+      return resolved
+    }
+
+    const resolveFunction = (func) => {
+      return resolveMask(func(IMask))
+    }
+
+    const escapeString = (str) => {
+      return str.replace(/\\\\/g, '\\');
+    }
+
+    const caseInsensitive = (estr, istr, matchFrom) => {
+      return IMask.MaskedEnum.DEFAULTS.matchValue(estr.toLowerCase(), istr.toLowerCase(), matchFrom)
+    }
 
     const load = (val, format = false) => {
       let loadValue = format && formatLoad.value ? formatLoad.value(val, form$.value) : val 
@@ -101,7 +193,7 @@ export default {
       }
       
       // Setting value for <TextElement>
-      value.value = unmask.value ? Mask.value.masked.unmaskedValue : Mask.value.displayValue
+      value.value = unmask.value ? Mask.value.masked.unmaskedValue : Mask.value.value
     }
 
     const destroyMask = () => {
@@ -117,7 +209,7 @@ export default {
         destroyMask()
       }
       
-      Mask.value = IMask(el$.value.input, resolvedOptions.value)
+      Mask.value = IMask(el$.value.input, resolvedMask.value)
 
       Mask.value.on('accept', () => {
         syncMask()
@@ -125,6 +217,8 @@ export default {
 
       syncMask()
     }
+
+    const handleInput = () => {}
 
     // =============== HOOKS =================
 
@@ -142,7 +236,7 @@ export default {
       checkInputType()
     })
 
-    watch(resolvedOptions, (n, o) => {
+    watch(resolvedMask, (n, o) => {
       if (!Mask.value) {
         return
       }
@@ -162,4 +256,4 @@ export default {
       update,
     }
   }
-}
+})
