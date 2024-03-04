@@ -1,7 +1,7 @@
 import type IMask, { type FactoryOpts } from 'imask';
 
 export interface VueformPluginMask {
-  mask?: string | number | FactoryOpts | ((IMask: IMask) => string | number | FactoryOpts);
+  mask?: string | FactoryOpts & { mask: any } | RegExp | ((IMask: IMask) => string | FactoryOpts | RegExp);
   unmask?: boolean;
   allowIncomplete?: boolean;
 }
