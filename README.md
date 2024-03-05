@@ -164,7 +164,7 @@ export default {
 />
 ```
 
-More info and examples can be found at the [official documentation](https://vueform.com/reference/text-element#option-mask).
+[More info and examples](https://vueform.com/reference/text-element#option-mask) can be found at the official documentation.
 
 ## License
 
