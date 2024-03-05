@@ -14,7 +14,7 @@ Plugin for [Vueform](https://github.com/vueform/vueform) to add [input mask](htt
 
 ## Prerequisites
 
-- [Vueform 1.8.1+](https://github.com/vueform/vueform)
+- [Vueform 1.9.0+](https://github.com/vueform/vueform)
 
 ## Installation
 
