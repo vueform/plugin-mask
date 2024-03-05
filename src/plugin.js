@@ -187,8 +187,6 @@ export default (options = {}, IMask = null) => ({
         }, {})
       }
 
-      console.log(resolved)
-
       return resolved
     }
 

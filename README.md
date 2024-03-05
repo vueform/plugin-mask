@@ -42,6 +42,8 @@ export default {
 
 ## Usage
 
+
+
 ```vue
 <template>
   <Vueform>
@@ -53,7 +55,7 @@ export default {
 </template>
 ```
 
-More info and examples can be found on our [official documentation](https://vueform.com/reference/text-element#option-mask).
+More info and examples can be found at the [official documentation](https://vueform.com/reference/text-element#option-mask).
 
 ## License
 
