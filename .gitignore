@@ -9,6 +9,9 @@ node_modules
 .tmp
 .cache
 
+# Npm
+package-lock.json
+
 # Yarn
 **/.yarn/cache
 **/.yarn/*state*

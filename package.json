@@ -36,7 +36,7 @@
     "prepack": "npm run build"
   },
   "dependencies": {
-    "@vueform/vueform": "^1.8.1",
+    "@vueform/vueform": "^1.8.0",
     "imask": "^7.5.0",
     "vue": "^3.4.19"
   },
