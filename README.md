@@ -44,6 +44,8 @@ export default {
 
 #### [Pattern](https://vueform.com/docs/input-mask#pattern)
 
+Pattern masks are useful when the mask needs to match a certain pattern and is more or less fixed in size.
+
 ```vue
 <TextElement
   name="text"
@@ -52,6 +54,8 @@ export default {
 ```
 
 #### [Number](https://vueform.com/docs/input-mask#number)
+
+Number mask can be used to restrict input to integer or decimal numbers.
 
 ```vue
 <TextElement
@@ -66,6 +70,8 @@ export default {
 
 #### [Range](https://vueform.com/docs/input-mask#range)
 
+Range mask can be used to restrict input to a number range.
+
 ```vue
 <TextElement
   name="text"
@@ -78,6 +84,8 @@ export default {
 ```
 
 #### [Enum](https://vueform.com/docs/input-mask#enum)
+
+Enum mask can be used to restrict input within characters enum with autocomplete.
 
 ```vue
 <TextElement
@@ -104,6 +112,8 @@ export default {
 
 #### [Repeat](https://vueform.com/docs/input-mask#repeat-pattern)
 
+Repeating certain patterns can be achieved using blocks:
+
 ```vue
 <TextElement
   name="text"
@@ -121,6 +131,8 @@ export default {
 
 #### [Regex](https://vueform.com/docs/input-mask#regex)
 
+Regular expressions can be used as mask.
+
 ```vue
 <TextElement
   name="text"
@@ -129,6 +141,8 @@ export default {
 ```
 
 #### [Date](https://vueform.com/docs/input-mask#date)
+
+Date mask can be used to input dates that are validated against existing dates (eg. don't allow 2023-02-29).
 
 ```vue
 <TextElement
@@ -141,6 +155,8 @@ export default {
 ```
 
 #### [Dynamic](https://vueform.com/docs/input-mask#dynamic)
+
+Dynamic mask automatically selects appropriate mask from provided array of masks. Mask with the largest number of fitting characters is selected considering provided masks order.
 
 ```vue
 <TextElement
