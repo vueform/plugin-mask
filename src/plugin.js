@@ -100,6 +100,10 @@ export default (options = {}, IMask = null) => ({
       set: (val) => maskedModel.value = val
     })
 
+    const empty = computed(() => {
+      return [undefined, null, ''].indexOf(model.value) !== -1
+    })
+
     // =============== METHODS ===============
 
     const resolveMask = (mask) => {
@@ -347,6 +351,7 @@ export default (options = {}, IMask = null) => ({
       update,
       clear,
       reset,
+      empty,
     }
   }
 })
