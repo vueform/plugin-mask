@@ -1,6 +1,6 @@
 {
   "name": "@vueform/plugin-mask",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Official input mask plugin for Vueform.",
   "repository": "vueform/plugin-mask",
   "license": "MIT",
@@ -36,7 +36,7 @@
     "prepack": "npm run build"
   },
   "dependencies": {
-    "@vueform/vueform": "^1.8.0",
+    "@vueform/vueform": "^1.9.0",
     "imask": "^7.5.0",
     "vue": "^3.4.19"
   },
