@@ -1,5 +1,5 @@
 /*!
- * Vueform Mask Plugin v1.0.1 (https://github.com/vueform/plugin-mask)
+ * Vueform Mask Plugin v1.0.2 (https://github.com/vueform/plugin-mask)
  * Copyright (c) 2024-present Adam Berecz <adam@vueform.com>
  * Licensed under the MIT License
  */
