@@ -236,6 +236,7 @@ export default (options = {}, IMask = null) => ({
       input.value.value = ''
       model.value = nullValue.value
       value.value = nullValue.value
+      initMask()
     }
     
     const reset = () => {
@@ -244,6 +245,7 @@ export default (options = {}, IMask = null) => ({
       model.value = defaultValue.value
       value.value = defaultValue.value
       resetValidators()
+      initMask()
     }
 
     const checkInputType = () => {
