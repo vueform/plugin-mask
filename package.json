@@ -1,6 +1,6 @@
 {
   "name": "@vueform/plugin-mask",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Official input mask plugin for Vueform.",
   "repository": "vueform/plugin-mask",
   "license": "MIT",

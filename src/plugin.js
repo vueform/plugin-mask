@@ -216,7 +216,7 @@ export default (options = {}, IMask = null) => ({
       value.value = loadValue
 
       if (Mask.value) {
-        Mask.value[unmask.value ? 'unmaskedValue' : 'value'] = loadValue
+        Mask.value[unmask.value ? 'unmaskedValue' : 'value'] = typeof loadValue === 'number' ? loadValue.toString() : loadValue
       }
     }
 
@@ -228,7 +228,7 @@ export default (options = {}, IMask = null) => ({
       value.value = val
 
       if (Mask.value) {
-        Mask.value[unmask.value ? 'unmaskedValue' : 'value'] = val
+        Mask.value[unmask.value ? 'unmaskedValue' : 'value'] = typeof val === 'number' ? val.toString() : val
       }
     }
 
