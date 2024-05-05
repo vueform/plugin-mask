@@ -1,6 +1,6 @@
 {
   "name": "@vueform/plugin-mask",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Official input mask plugin for Vueform.",
   "repository": "vueform/plugin-mask",
   "license": "MIT",
@@ -24,12 +24,17 @@
     "./plugin.js": {
       "types": "./types/index.d.ts",
       "default": "./dist/plugin.js"
+    },
+    "./src": {
+      "types": "./types/index.d.ts",
+      "default": "./src/index.js"
     }
   },
   "types": "./types/index.d.ts",
   "main": "./dist/index.js",
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "scripts": {
     "build": "rollup --config build/rollup.config.js",

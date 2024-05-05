@@ -1,3 +1,10 @@
+## v1.0.5
+
+> `2024-05-05`
+
+### 🎉 Feature
+- Allow mask definition internally (not via prop).
+
 ## v1.0.4
 
 > `2024-04-26`

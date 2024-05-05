@@ -20,12 +20,13 @@ export default (options = {}, IMask = null) => ({
   },
   setup(props, context, component) {
     const {
-      mask, inputType, formatLoad, unmask, allowIncomplete,
+      formatLoad,
+      mask: maskProp,
+      inputType: inputTypeProp,
+      unmask,
+      allowIncomplete,
+      name,
     } = toRefs(props)
-
-    if (!mask.value) {
-      return component
-    }
 
     const {
       nullValue,
@@ -37,7 +38,21 @@ export default (options = {}, IMask = null) => ({
       resetting,
       resetValidators,
       input,
+      mask: maskComp,
+      inputType: inputTypeComp,
     } = component
+
+    let mask = computed(() => {
+      return !maskProp.value && maskComp ? maskComp.value : maskProp.value
+    })
+
+    let inputType = computed(() => {
+      return !inputTypeProp?.value && inputTypeComp ? inputTypeComp.value : inputTypeProp.value
+    })
+
+    if (!mask?.value) {
+      return component
+    }
 
     // ================ DATA =================
 
@@ -168,14 +183,21 @@ export default (options = {}, IMask = null) => ({
             resolved.dispatch = (appended, dynamicMasked) => {
               const number = (dynamicMasked.value + appended).replace(/\D/g,'')
 
-              return dynamicMasked.compiledMasks.find(m => number.indexOf(m.startsWith) === 0)
+              return dynamicMasked.compiledMasks.find((m) => {
+                if (Array.isArray(m.startsWith)) {
+                  return m.startsWith.some((sw) => {
+                    return number.indexOf(sw) === 0
+                  })
+                }
+
+                return number.indexOf(m.startsWith) === 0
+              })
             }
           }
 
           if (obj.element) {
             resolved.dispatch = (appended, dynamicMasked) => {
               let elementValue = form$.value.el$(obj.element)?.value
-
               return dynamicMasked.compiledMasks.find(m => m.when == elementValue || !m.when)
             }
           }
@@ -192,18 +214,6 @@ export default (options = {}, IMask = null) => ({
       }
 
       return resolved
-    }
-
-    const resolveFunction = (func) => {
-      return resolveMask(func(IMask))
-    }
-
-    const escapeString = (str) => {
-      return str.replace(/\\\\/g, '\\');
-    }
-
-    const caseInsensitive = (estr, istr, matchFrom) => {
-      return IMask.MaskedEnum.DEFAULTS.matchValue(estr.toLowerCase(), istr.toLowerCase(), matchFrom)
     }
 
     const load = (val, format = false) => {
@@ -248,15 +258,6 @@ export default (options = {}, IMask = null) => ({
       initMask()
     }
 
-    const checkInputType = () => {
-      if (inputType.value !== 'text') {
-        console.error(`Input mask only works with type="text" (found at: '${path.value}').`)
-        return false
-      }
-
-      return true
-    }
-
     const syncMask = () => {
       // Setting value for <INPUT>
       model.value = Mask.value.displayValue
@@ -269,14 +270,6 @@ export default (options = {}, IMask = null) => ({
       
       // Setting value for <TextElement>
       value.value = unmask.value ? Mask.value.masked.unmaskedValue : Mask.value.value
-    }
-
-    const destroyMask = () => {
-      if (!Mask.value) {
-        return
-      }
-
-      Mask.value.destroy()
     }
 
     const initMask = () => {
@@ -308,10 +301,39 @@ export default (options = {}, IMask = null) => ({
       }
     }
 
+    const destroyMask = () => {
+      if (!Mask.value) {
+        return
+      }
+
+      Mask.value.destroy()
+    }
+
     const refreshMask = () => {
       nextTick(() => {
         initMask()
       })
+    }
+
+    const resolveFunction = (func) => {
+      return resolveMask(func(IMask))
+    }
+
+    const escapeString = (str) => {
+      return str.replace(/\\\\/g, '\\');
+    }
+
+    const caseInsensitive = (estr, istr, matchFrom) => {
+      return IMask.MaskedEnum.DEFAULTS.matchValue(estr.toLowerCase(), istr.toLowerCase(), matchFrom)
+    }
+
+    const checkInputType = () => {
+      if (inputType.value !== 'text') {
+        console.error(`Input mask only works with type="text" (found at: '${path.value}').`)
+        return false
+      }
+
+      return true
     }
 
     const handleInput = () => {}
