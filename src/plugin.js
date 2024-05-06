@@ -1,7 +1,7 @@
 import { toRefs, onMounted, ref, computed, watch, nextTick } from 'vue'
 
 export default (options = {}, IMask = null) => ({
-  apply: 'TextElement',
+  apply: ['TextElement', 'PhoneElement'],
   props: {
     mask: {
       required: false,
