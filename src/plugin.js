@@ -272,6 +272,16 @@ export default (options = {}, IMask = null) => ({
       value.value = unmask.value ? Mask.value.masked.unmaskedValue : Mask.value.value
     }
 
+    const passiveSync = () => {
+      el$.value.resetting = true
+
+      syncMask()
+
+      nextTick(() => {
+        el$.value.resetting = false
+      })
+    }
+
     const initMask = () => {
       if (Mask.value) {
         destroyMask()
@@ -283,7 +293,7 @@ export default (options = {}, IMask = null) => ({
         syncMask()
       })
 
-      syncMask()
+      passiveSync()
 
       // Unwatch all
       watchers.value.map(w => w())
