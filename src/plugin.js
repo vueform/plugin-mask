@@ -359,6 +359,10 @@ export default (options = {}, IMask = null) => ({
         return
       }
 
+      if (JSON.stringify(n) === JSON.stringify(o)) {
+        return
+      }
+
       initMask()
     }, { deep: true })
 
