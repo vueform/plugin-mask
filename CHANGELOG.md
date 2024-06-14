@@ -1,3 +1,10 @@
+## v1.0.7
+
+> `2024-06-14`
+
+### 🐞 Bug Fixes
+- Don't trigger validation on initial load.
+
 ## v1.0.6
 
 > `2024-06-14`
