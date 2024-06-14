@@ -1,3 +1,10 @@
+## v1.0.6
+
+> `2024-06-14`
+
+### 🐞 Bug Fixes
+- Recursive inline mask object watcher fix
+
 ## v1.0.5
 
 > `2024-05-05`
